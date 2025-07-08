@@ -1,0 +1,16 @@
+<po-dynamic-form
+  [p-fields]="fields"
+  [p-value]="person"
+  (p-submit)="onSubmit($event)"
+></po-dynamic-form>
+
+<br />
+
+<div class="po-row">
+  <po-button
+    class="po-md-3"
+    p-label="Save"
+  (p-click)="onSubmit(dynamicForm.form.value)"
+  >
+  </po-button>
+</div>
