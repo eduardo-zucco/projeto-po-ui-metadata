@@ -1,6 +1,8 @@
 <div class="po-wrapper">
-  <po-menu [p-menus]="menus"></po-menu>
-  <po-toolbar p-title="Página inicial"></po-toolbar>
+  <po-menu [p-menus]="menus" [p-collapsed]="collapsed"></po-menu>
+  <po-toolbar p-title="Página inicial" [p-actions]="actions">
+
+  </po-toolbar>
   <po-page-default>
     <div class="content">
       <h2>bem-vindo</h2>

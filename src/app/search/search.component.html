@@ -1,0 +1,16 @@
+<po-page-default p-title="BUSCAR USUÁRIO">
+  <po-container>
+    <po-email
+      name="email"
+      [(ngModel)]="email"
+      p-placeholder="Digite o e-mail do usuário"
+      p-required="true"
+    >
+    </po-email>
+
+    <po-button p-label="Buscar" (p-click)="buscarUsuario()"></po-button>
+  </po-container>
+
+  <po-dynamic-view *ngIf="usuario" [p-fields]="fields" [p-value]="usuario" [p-text-wrap]="true">
+  </po-dynamic-view>
+</po-page-default>

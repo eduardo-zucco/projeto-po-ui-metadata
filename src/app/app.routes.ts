@@ -1,11 +1,12 @@
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { EnderecoComponent } from './endereco/endereco.component';
 import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
+import { SearchComponent } from './search/search.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent },
   {path: 'cadastro', component: CadastroComponent },
-  {path: 'endereco', component: EnderecoComponent },
+  {path: 'search', component: SearchComponent },
+
 ];

@@ -1,16 +1,18 @@
-<po-dynamic-form
-  [p-fields]="fields"
-  [p-value]="person"
-  (p-submit)="onSubmit($event)"
-></po-dynamic-form>
+<po-page-default p-title="CADASTRO DE USUÁRIO">
+  <po-dynamic-form
+    [p-fields]="fields"
+    [p-value]="person"
+    (p-submit)="onSubmit($event)"
+  ></po-dynamic-form>
 
-<br />
+  <br />
 
-<div class="po-row">
-  <po-button
-    class="po-md-3"
-    p-label="Save"
-  (p-click)="onSubmit(dynamicForm.form.value)"
-  >
-  </po-button>
-</div>
+  <div class="po-row">
+    <po-button
+      class="po-md-3"
+      p-label="Salvar"
+      (p-click)="onSubmit(dynamicForm.form.value)"
+    >
+    </po-button>
+  </div>
+</po-page-default>
