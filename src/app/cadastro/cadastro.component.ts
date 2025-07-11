@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, viewChild } from '@angular/core';
-import { PoDynamicFormComponent, PoDynamicModule, PoNotificationModule, PoPageModule } from '@po-ui/ng-components';
+import { PoBreadcrumb, PoDynamicFormComponent, PoDynamicModule, PoNotificationModule, PoPageModule, PoBreadcrumbModule } from '@po-ui/ng-components';
 import { Router } from '@angular/router';
 import {
   PoDynamicFormField,
@@ -13,12 +13,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro',
-  imports: [PoDynamicModule, PoButtonModule, PoNotificationModule, PoPageModule],
+  imports: [PoDynamicModule, PoButtonModule, PoNotificationModule, PoPageModule, PoBreadcrumbModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
 export class CadastroComponent {
-  @ViewChild(PoDynamicFormComponent, {static: true}) dynamicForm!: PoDynamicFormComponent;
+  @ViewChild(PoDynamicFormComponent, { static: true }) dynamicForm!: PoDynamicFormComponent;
+  readonly breadcrumb: PoBreadcrumb = {
+    items: [{ label: 'Home', link: '/home' }, { label: 'Tabela' }]
+  };
   person = {};
   validateFields: Array<string> = ['state'];
 
@@ -36,46 +39,46 @@ export class CadastroComponent {
       placeholder: 'Digite Seu Nome'
     },
     {
-    property: 'email',
-    label: 'E-mail',
-    required: true,
-    maxLength: 150,
-    gridColumns: 6,
-    gridSmColumns: 12,
-    order: 2,
-    placeholder: 'seu@email.com'
-  },
-  {
-    property: 'Uf',
-    label: 'UF',
-    maxLength: 2,
-    required: true,
-    gridColumns: 2,
-    gridSmColumns: 12,
-    order: 3,
-    placeholder: 'SP, RJ, MG...'
-  },
-  {
-    property: 'Municipio',
-    label: 'Município',
-    maxLength: 100,
-    required: true,
-    gridColumns: 6,
-    gridSmColumns: 12,
-    order: 4,
-    placeholder: 'Informe a Cidade'
-  },
-  {
-    property: 'Cep',
-    label: 'CEP',
-    maxLength: 10,
-    required: true,
-    gridColumns: 4,
-    gridSmColumns: 12,
-    order: 5,
-    placeholder: '00000-000',
-    pattern: '[0-9]{5}-[0-9]{3}'
-  },
+      property: 'email',
+      label: 'E-mail',
+      required: true,
+      maxLength: 150,
+      gridColumns: 6,
+      gridSmColumns: 12,
+      order: 2,
+      placeholder: 'seu@email.com'
+    },
+    {
+      property: 'Uf',
+      label: 'UF',
+      maxLength: 2,
+      required: true,
+      gridColumns: 2,
+      gridSmColumns: 12,
+      order: 3,
+      placeholder: 'SP, RJ, MG...'
+    },
+    {
+      property: 'Municipio',
+      label: 'Município',
+      maxLength: 100,
+      required: true,
+      gridColumns: 6,
+      gridSmColumns: 12,
+      order: 4,
+      placeholder: 'Informe a Cidade'
+    },
+    {
+      property: 'Cep',
+      label: 'CEP',
+      maxLength: 10,
+      required: true,
+      gridColumns: 4,
+      gridSmColumns: 12,
+      order: 5,
+      placeholder: '00000-000',
+      pattern: '[0-9]{5}-[0-9]{3}'
+    },
 
   ];
   constructor(private http: HttpClient, private router: Router) {

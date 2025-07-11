@@ -8,7 +8,8 @@ import {
   PoContainerModule,
   PoFieldModule,
   PoButtonModule,
-  PoDividerModule
+  PoDividerModule,
+  PoBreadcrumbModule,
 } from '@po-ui/ng-components';
 import { HttpClient } from '@angular/common/http';
 
@@ -21,12 +22,15 @@ import { HttpClient } from '@angular/common/http';
     FormsModule,
     PoButtonModule,
     PoDividerModule,
-    CommonModule
+    CommonModule,
+    PoBreadcrumbModule,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
+
+  
   email: string = '';
   usuario: any = null;
 
@@ -75,7 +79,10 @@ export class SearchComponent {
     const url = `http://localhost:5000/api/usercompletos/by-email/${this.email}`;
 
     this.http.get(url).subscribe({
-      next: (data) => this.usuario = data,
+      next: (data) => {
+        console.log('usuario recebido', data)
+        this.usuario = data;
+      },
       error: () => {
         this.usuario = null;
         alert('Usuário Não Encontrado');
