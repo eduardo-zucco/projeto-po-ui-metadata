@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PoBreadcrumb, PoBreadcrumbModule, PoPageModule } from '@po-ui/ng-components';
+import { PoBreadcrumb, PoBreadcrumbModule, PoNotificationService, PoPageModule } from '@po-ui/ng-components';
 import { PoPageDynamicTableActions, PoPageDynamicTableModule } from '@po-ui/ng-templates';
 import { CommonModule } from '@angular/common';
 import { UserTableService } from '../services/user-table.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,25 +19,57 @@ export class TabelaComponent {
 
   public actions: PoPageDynamicTableActions = {
     new: '/cadastro',
-    remove: true
   };
 
 
   readonly breadcrumb: PoBreadcrumb = {
-    items: [{label: 'Home', link: '/home'}, {label: 'Tabela'}]
+    items: [{ label: 'Home', link: '/home' }, { label: 'Tabela' }]
   };
 
   readonly fields: Array<object> = [
-    {property: 'id', label: 'ID', key: true},
-    {property:'name',label: 'Nome'},
-    {property:'email',label: 'E-mail'},
-    {property:'uf',label: 'UF'},
-    {property:'municipio',label: 'Município'},
-    {property:'cep',label: 'CEP'},
-    {property: 'createAt', label: 'CreatedAt'}
+    { property: 'id', label: 'ID', key: true },
+    { property: 'name', label: 'Nome' },
+    { property: 'email', label: 'E-mail' },
+    { property: 'uf', label: 'UF' },
+    { property: 'municipio', label: 'Município' },
+    { property: 'cep', label: 'CEP' },
+    { property: 'createAt', label: 'CreatedAt' }
   ];
-  constructor (private userTableService: UserTableService){}
+  constructor(private userTableService: UserTableService, private http: HttpClient, private poNotification: PoNotificationService, private router: Router) { }
+
   getData = (params: any) => {
     return this.userTableService.getUsers(params);
   }
+
+  reloadTable() {
+    window.location.reload();
+  }
+
+  public deleteUser(user: any) {
+    if (confirm(`Tem Certeza que Deseja Excluir o Usuário "${user.name}"`)) {
+      this.http.delete(`${this.serviceApi}/${user.id}`).subscribe({
+        next: () => {
+          this.poNotification.success("Usuário Excluido com Sucesso");
+          this.reloadTable();
+        },
+        error: () => this.poNotification.error('Erro ao Excluir o Usuário')
+      });
+    }
+  }
+  public editarUsuario(user: any) {
+    this.router.navigate(['/editar', user.id]);
+  }
+
+
+  readonly customActions = [
+    {
+      label: 'Excluir',
+      action: (user: any) => this.deleteUser(user),
+    },
+    {
+      label: 'Editar',
+      action: (user: any)=> this.editarUsuario(user),
+    }
+  ];
+
 }
