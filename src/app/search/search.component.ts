@@ -10,6 +10,7 @@ import {
   PoButtonModule,
   PoDividerModule,
   PoBreadcrumbModule,
+  PoBreadcrumb,
 } from '@po-ui/ng-components';
 import { HttpClient } from '@angular/common/http';
 
@@ -29,8 +30,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
+  readonly breadcrumb: PoBreadcrumb = {
+      items: [{label: 'Home', link: '/home'}, {label: 'Busca'}]
+    };
 
-  
+
+
   email: string = '';
   usuario: any = null;
 

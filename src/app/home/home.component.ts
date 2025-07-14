@@ -1,12 +1,12 @@
 import { SearchComponent } from './../search/search.component';
 import { Component } from '@angular/core';
-import { PoPageModule } from '@po-ui/ng-components';
+import { PoPageModule, PoIconModule } from '@po-ui/ng-components';
 import { PoMenuModule } from '@po-ui/ng-components';
 import { PoToolbarModule, PoToolbarProfile, PoToolbarAction, PoContainerModule, PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-home',
-  imports: [PoPageModule, PoToolbarModule, PoMenuModule],
+  imports: [PoPageModule, PoToolbarModule, PoMenuModule, PoIconModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

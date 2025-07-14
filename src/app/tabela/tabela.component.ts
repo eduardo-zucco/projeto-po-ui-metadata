@@ -14,12 +14,13 @@ import { UserTableService } from '../services/user-table.service';
 })
 export class TabelaComponent {
 
+  readonly serviceApi = 'http://localhost:5000/api/usercompletos';
+
   public actions: PoPageDynamicTableActions = {
     new: '/cadastro',
     remove: true
   };
 
-  readonly serviceApi = 'http://localhost:5000/api/usercompletos';
 
   readonly breadcrumb: PoBreadcrumb = {
     items: [{label: 'Home', link: '/home'}, {label: 'Tabela'}]
@@ -38,5 +39,4 @@ export class TabelaComponent {
   getData = (params: any) => {
     return this.userTableService.getUsers(params);
   }
-
 }

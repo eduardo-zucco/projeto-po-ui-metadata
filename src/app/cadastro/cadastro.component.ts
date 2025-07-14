@@ -20,7 +20,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class CadastroComponent {
   @ViewChild(PoDynamicFormComponent, { static: true }) dynamicForm!: PoDynamicFormComponent;
   readonly breadcrumb: PoBreadcrumb = {
-    items: [{ label: 'Home', link: '/home' }, { label: 'Tabela' }]
+    items: [{ label: 'Home', link: '/home' }, { label: 'Cadastro' }]
   };
   person = {};
   validateFields: Array<string> = ['state'];
