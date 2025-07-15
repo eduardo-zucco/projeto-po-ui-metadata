@@ -1,10 +1,28 @@
 <div class="po-wrapper">
   <po-menu [p-menus]="menus" p-automatic-toggle="true"></po-menu>
-  <po-toolbar p-title="Página Home">
-  </po-toolbar>
-  <po-page-default>
-    <div class="content">
-      <h2>bem-vindo</h2>
+  <po-toolbar p-title="Sistema de Usuários" ></po-toolbar>
+
+    <div class="home-content">
+      <h2 style="text-align: center;">Bem-Vindo</h2>
+      <p style="text-align: center;">Use os botões abaixo para navegar:</p>
+
+      <div class="button-group">
+        <po-button
+          class="animated-po-button"
+          p-label="Cadastrar Usuário"
+          p-icon="po-icon-user-add"
+          (p-click)="goToCadastro()"
+        ></po-button>
+
+        <po-button
+        class="animated-po-button"
+          p-label="Ver Tabela"
+          p-icon="po-icon-list"
+          (p-click)="goToTabela()"
+        ></po-button>
+      </div>
+
+
     </div>
-  </po-page-default>
+
 </div>

@@ -1,10 +1,16 @@
 <po-page-default>
   <po-page-dynamic-table
+    #table
     p-service-api="http://localhost:5000/api/usercompletos"
     p-title="Tabela de Usuários Cadastrados"
-    p-infinite-scroll="true"
+    [p-infinite-scroll]="true"
     [p-breadcrumb]="breadcrumb"
     [p-actions]="actions"
     [p-table-custom-actions]="customActions"
+    p-quick-search
+    p-quick-search-param="search"
+    [p-quick-search-width]="4"
+    p-quick-search-placeholder="Buscar por nome"
+    [p-fields]="fields"
   ></po-page-dynamic-table>
 </po-page-default>

@@ -1,0 +1,47 @@
+
+
+.button-group {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.animated-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.animated-button:hover {
+  background-color: #1565c0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.animated-button.secondary {
+  background-color: #009688;
+}
+
+.animated-button.secondary:hover {
+  background-color: #00796b;
+}
+
+.animated-po-button {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+.animated-po-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
+}
+

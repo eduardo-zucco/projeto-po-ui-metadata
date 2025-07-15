@@ -32,7 +32,7 @@ export class CadastroComponent {
       divider: 'CADASTRO DE USUÁRIO',
       required: true,
       minLength: 4,
-      maxLength: 50,
+      maxLength: 100,
       gridColumns: 6,
       gridSmColumns: 12,
       order: 1,
@@ -52,10 +52,13 @@ export class CadastroComponent {
       property: 'Uf',
       label: 'UF',
       maxLength: 2,
+      minLength: 2,
       required: true,
       gridColumns: 2,
       gridSmColumns: 12,
       order: 3,
+      pattern: '[A-Z]{2}',
+      errorMessage: 'Formato Inválido',
       placeholder: 'SP, RJ, MG...'
     },
     {
@@ -77,7 +80,8 @@ export class CadastroComponent {
       gridSmColumns: 12,
       order: 5,
       placeholder: '00000-000',
-      pattern: '[0-9]{5}-[0-9]{3}'
+      pattern: '[0-9]{5}-[0-9]{3}',
+      errorMessage: 'CEP inválido'
     },
 
   ];

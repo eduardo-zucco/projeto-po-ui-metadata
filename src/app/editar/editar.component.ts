@@ -32,7 +32,7 @@ export class EditarComponent implements OnInit {
   }
 
   public readonly fields: PoPageDynamicEditField[] = [
-    { property: 'id', label: 'ID', key: true, visible: true },
+    { property: 'id', label: 'ID', key: true, visible: false },
     { property: 'name', label: 'Nome', required: true },
     { property: 'email', label: 'E-mail', required: true },
     { property: 'uf', label: 'UF' },
