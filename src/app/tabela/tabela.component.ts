@@ -27,7 +27,6 @@ export class TabelaComponent {
 
   public actions: PoPageDynamicTableActions = {
     new: '/cadastro',
-
   };
 
 
@@ -42,7 +41,7 @@ export class TabelaComponent {
     { property: 'uf', label: 'UF' },
     { property: 'municipio', label: 'Município' },
     { property: 'cep', label: 'CEP' },
-    { property: 'createAt', label: 'Criado Em' }
+    { property: 'createAt', label: 'Criado Em', visible: false }
   ];
   constructor(private userTableService: UserTableService, private http: HttpClient, private poNotification: PoNotificationService, private router: Router) { }
 
@@ -71,10 +70,12 @@ export class TabelaComponent {
     {
       label: 'Excluir',
       action: (user: any) => this.deleteUser(user),
+      icon:'an an-trash',
     },
     {
       label: 'Editar',
       action: (user: any)=> this.editarUsuario(user),
+      icon:'an an-pencil-line',
     }
   ];
 

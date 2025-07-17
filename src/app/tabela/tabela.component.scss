@@ -1,0 +1,36 @@
+.animated-po-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &.primary {
+    background-color: var(--po-color-primary);
+    color: #fff;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(25, 118, 210, 0.4);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--po-color-secondary);
+    color: #fff;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 150, 136, 0.4);
+    }
+  }
+
+  &.accent {
+    background-color: var(--po-color-contrast);
+    color: #fff;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(198, 40, 40, 0.4);
+    }
+  }
+}

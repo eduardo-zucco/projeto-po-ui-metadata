@@ -31,7 +31,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent {
   readonly breadcrumb: PoBreadcrumb = {
-      items: [{label: 'Home', link: '/home'}, {label: 'Busca'}]
+      items: [{label: 'Home', link: '/home'}, {label: 'Buscar'}]
     };
 
 
@@ -46,7 +46,7 @@ export class SearchComponent {
         label: 'Nome',
         gridColumns: 4,
         order: 1,
-        divider: 'INFORMAÇÕES PESSOAIS'
+        container: 'INFORMAÇÕES PESSOAIS'
       },
       {
         property: 'email',

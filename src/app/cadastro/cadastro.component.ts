@@ -10,6 +10,7 @@ import {
   PoButtonModule
 } from '@po-ui/ng-components';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TratamentoDeErrosService } from '../services/tratamento-de-erros.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -23,7 +24,6 @@ export class CadastroComponent {
     items: [{ label: 'Home', link: '/home' }, { label: 'Cadastro' }]
   };
   person = {};
-  validateFields: Array<string> = ['state'];
 
   fields: Array<PoDynamicFormField> = [
     {
@@ -42,10 +42,12 @@ export class CadastroComponent {
       property: 'email',
       label: 'E-mail',
       required: true,
+      pattern: '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$',
       maxLength: 150,
       gridColumns: 6,
       gridSmColumns: 12,
       order: 2,
+      errorMessage: 'Formato Inválido',
       placeholder: 'seu@email.com'
     },
     {
@@ -80,12 +82,12 @@ export class CadastroComponent {
       gridSmColumns: 12,
       order: 5,
       placeholder: '00000-000',
-      pattern: '[0-9]{5}-[0-9]{3}',
-      errorMessage: 'CEP inválido'
+      pattern: '^[0-9]{5}-[0-9]{3}$',
+      errorMessage: 'CEP Inválido'
     },
 
   ];
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private errorHandler: TratamentoDeErrosService) {
   }
 
   onSubmit(formData: any) {
@@ -93,15 +95,25 @@ export class CadastroComponent {
       .subscribe({
         next: () => {
           alert('Cadastro realizado com sucesso!');
-          this.router.navigate(['/home']);
+          this.dynamicForm.form.reset()
         },
         error: (err) => {
-          alert('Erro ao cadastrar: ' + (err.error?.message || 'erro desconhecido'));
+          this.errorHandler.mostraErro(err);
         }
       });
   }
+
+  onCancel() {
+    this.router.navigate(['/home'])
+  };
+
+  public get isFormInvalid(): boolean {
+    return this.dynamicForm?.form?.invalid ?? false;
+  };
+
   actions = {
-    submit: 'Salvar'
+    submit: 'Salvar',
+    cancel: this.onCancel.bind(this)
   };
 
 
