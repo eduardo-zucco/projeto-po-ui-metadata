@@ -1,4 +1,3 @@
-
 :host ::ng-deep .po-page-default {
   background-size: cover;
   background-position: center;
@@ -63,4 +62,21 @@
       box-shadow: 0 8px 16px rgba(198, 40, 40, 0.4);
     }
   }
+}
+
+.image-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.image:hover {
+  box-shadow: 0 0 20px rgba(10, 71, 117, 0.614);
 }
