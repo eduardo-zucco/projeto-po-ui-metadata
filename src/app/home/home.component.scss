@@ -3,9 +3,21 @@
   background-position: center;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .home-content {
   padding: 3rem 1rem;
   text-align: center;
+  animation: fadeInUp 0.8s ease-in-out;
 }
 
 .home-title {
@@ -25,41 +37,56 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem;
-}
 
-.animated-po-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  .animated-po-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 0.8s ease-in-out;
+    animation-fill-mode: both;
 
-  &.primary {
-    background-color: var(--po-color-primary);
-    color: #fff;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(25, 210, 71, 0.233);
+    &:nth-child(1) {
+      animation-delay: 0.1s;
     }
-  }
-
-  &.secondary {
-    background-color: var(--po-color-secondary);
-    color: #fff;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 102, 150, 0.466);
+    &:nth-child(2) {
+      animation-delay: 0.2s;
     }
-  }
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
 
-  &.accent {
-    background-color: var(--po-color-contrast);
-    color: #fff;
+    &.primary {
+      background-color: var(--po-color-primary);
+      color: #fff;
 
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(198, 40, 40, 0.4);
+      &:hover,
+      &:active {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(25, 210, 71, 0.233);
+      }
+    }
+
+    &.secondary {
+      background-color: var(--po-color-secondary);
+      color: #fff;
+
+      &:hover,
+      &:active {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 102, 150, 0.466);
+      }
+    }
+
+    &.accent {
+      background-color: var(--po-color-contrast);
+      color: #fff;
+
+      &:hover,
+      &:active {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(198, 40, 40, 0.4);
+      }
     }
   }
 }
@@ -78,5 +105,5 @@
 }
 
 .image:hover {
-  box-shadow: 0 0 20px rgba(10, 71, 117, 0.614);
+  box-shadow: 0 0 20px rgba(47, 4, 102, 0.445);
 }

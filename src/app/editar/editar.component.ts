@@ -90,7 +90,6 @@ export class EditarComponent implements OnInit {
     ]
   };
 
-
   public readonly actions: PoPageDynamicEditActions = {
     cancel: '/tabela',
     save: '/tabela'

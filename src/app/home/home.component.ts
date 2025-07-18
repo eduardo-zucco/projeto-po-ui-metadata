@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { SearchComponent } from './../search/search.component';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PoPageModule, PoIconModule, PoWidgetModule, PoButtonModule, PoImageModule } from '@po-ui/ng-components';
 import { PoMenuModule } from '@po-ui/ng-components';
 import { PoToolbarModule, PoToolbarProfile, PoToolbarAction, PoContainerModule, PoMenuItem } from '@po-ui/ng-components';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,12 @@ import { PoToolbarModule, PoToolbarProfile, PoToolbarAction, PoContainerModule, 
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent{
   public path: string = ''
-  constructor(private router: Router){}
+  totalUsers: number = 0;
+  constructor(private router: Router, private http: HttpClient) { }
+
+
   collapsed: boolean = true;
   menus = [
     { label: 'Home', link: '/home', icon: 'an an-house-line' },
@@ -32,15 +36,18 @@ export class HomeComponent {
   toggleMenu() {
     this.collapsed = !this.collapsed
   };
-  goToCadastro(){
+  goToCadastro() {
     this.router.navigate(['/cadastro'])
   };
 
-   goToTabela(){
+  goToTabela() {
     this.router.navigate(['/tabela'])
   };
 
-  goToSearch(){
+  goToSearch() {
     this.router.navigate(['/search'])
   };
+
+
+
 }

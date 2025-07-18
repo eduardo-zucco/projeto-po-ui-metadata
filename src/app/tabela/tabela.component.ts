@@ -50,13 +50,13 @@ export class TabelaComponent {
   }
 
   public deleteUser(user: any) {
-    if (confirm(`Tem Certeza que Deseja Excluir o Usuário "${user.name}"`)) {
+    if (confirm(`Deseja realmente excluir o usuário "${user.name}"?`)) {
       this.http.delete(`${this.serviceApi}/${user.id}`).subscribe({
         next: () => {
-          this.poNotification.success("Usuário Excluido com Sucesso");
+          this.poNotification.success("Usuário excluído com sucesso!");
           this.reloadTable();
         },
-        error: () => this.poNotification.error('Erro ao Excluir o Usuário')
+        error: () => this.poNotification.error('Erro ao excluir o usuário.')
       });
     }
   }

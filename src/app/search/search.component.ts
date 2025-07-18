@@ -11,6 +11,7 @@ import {
   PoDividerModule,
   PoBreadcrumbModule,
   PoBreadcrumb,
+  PoNotificationService,
 } from '@po-ui/ng-components';
 import { HttpClient } from '@angular/common/http';
 
@@ -74,10 +75,10 @@ export class SearchComponent {
       }
     ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private poNotification: PoNotificationService) {}
   buscarUsuario() {
     if (!this.email) {
-      alert('Digite um e-mail Válido e Cadastrado')
+      this.poNotification.warning('Digite um e-mail válido e cadastrado.');
       return;
     }
 
@@ -90,7 +91,7 @@ export class SearchComponent {
       },
       error: () => {
         this.usuario = null;
-        alert('Usuário Não Encontrado');
+        this.poNotification.warning('Usuário não encontrado.');
       }
     });
   }

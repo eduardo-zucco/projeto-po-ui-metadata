@@ -87,18 +87,18 @@ export class CadastroComponent {
     },
 
   ];
-  constructor(private http: HttpClient, private router: Router, private errorHandler: TratamentoDeErrosService) {
+  constructor(private http: HttpClient, private router: Router, private errorHandler: TratamentoDeErrosService, private poNotification: PoNotificationService) {
   }
 
   onSubmit(formData: any) {
     this.http.post('http://localhost:5000/api/usercompletos', formData)
       .subscribe({
         next: () => {
-          alert('Cadastro realizado com sucesso!');
-          this.dynamicForm.form.reset()
+          this.poNotification.success('Cadastro realizado com sucesso!');
+          this.dynamicForm.form.reset();
         },
-        error: (err) => {
-          this.errorHandler.mostraErro(err);
+        error: (erro) => {
+          this.errorHandler.mostraErro(erro);
         }
       });
   }

@@ -2,7 +2,6 @@
   <po-dynamic-form
     [p-fields]="fields"
     [p-value]="person"
-    (p-submit)="onSubmit($event)"
   ></po-dynamic-form>
 
   <br />
@@ -15,11 +14,11 @@
       (p-click)="onSubmit(dynamicForm.form.value)"
     >
     </po-button>
+
     <po-button
       class="po-md-1"
       p-label="Cancelar"
-      (p-click)="onCancel()"
-    >
+      (p-click)="onCancel()">
     </po-button>
   </div>
 </po-page-default>
