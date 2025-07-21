@@ -24,6 +24,7 @@ export class HomeComponent{
     { label: 'Cadastro', link: '/cadastro', icon: 'an an-book-open-text' },
     { label: 'Buscar', link: '/search', icon: 'po-icon-search' },
     { label: 'Tabela de Usuários', link: '/tabela', icon: 'an an-database' },
+    { label: 'Tabela de Usuários 2', link: '/lista', icon: 'an an-database' },
   ]
   actions: Array<PoToolbarAction> = [
     {

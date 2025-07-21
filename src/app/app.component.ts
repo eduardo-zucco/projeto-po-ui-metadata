@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private startupService: StartupService) {}
 
   ngOnInit() {
-    this.startupService.showMessage();
-    console.log('AppComponent inicializado.');
+    //this.startupService.showMessage();
+    //console.log('AppComponent inicializado.');
   };
 }
