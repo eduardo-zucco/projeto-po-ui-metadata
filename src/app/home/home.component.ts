@@ -21,10 +21,10 @@ export class HomeComponent{
   collapsed: boolean = true;
   menus = [
     { label: 'Home', link: '/home', icon: 'an an-house-line' },
-    { label: 'Cadastro', link: '/cadastro', icon: 'an an-book-open-text' },
-    { label: 'Buscar', link: '/search', icon: 'po-icon-search' },
+    { label: 'Cadastro de Usuário', link: '/cadastro', icon: 'an an-book-open-text' },
+    { label: 'Buscar Usuário', link: '/search', icon: 'po-icon-search' },
     { label: 'Tabela de Usuários', link: '/tabela', icon: 'an an-database' },
-    { label: 'Tabela de Usuários 2', link: '/lista', icon: 'an an-database' },
+    { label: 'Tabela de Parâmetros', link: '/lista', icon: 'an an-database' },
   ]
   actions: Array<PoToolbarAction> = [
     {
@@ -43,6 +43,10 @@ export class HomeComponent{
 
   goToTabela() {
     this.router.navigate(['/tabela'])
+  };
+
+  goToParametrosTabela() {
+    this.router.navigate(['/lista'])
   };
 
   goToSearch() {

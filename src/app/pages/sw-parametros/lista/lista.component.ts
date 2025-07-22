@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { PoBreadcrumb, PoBreadcrumbModule, PoDynamicFormField, PoDynamicViewField, PoNotificationService, PoPageModule } from '@po-ui/ng-components';
+import { PoBreadcrumb, PoBreadcrumbModule, PoDialogService, PoDynamicFormField, PoDynamicViewField, PoNotificationService, PoPageModule } from '@po-ui/ng-components';
 import { PoPageDynamicTableActions, PoPageDynamicTableModule, PoPageDynamicSearchModule, PoPageDynamicSearchFilters, PoPageDynamicTableFilters } from '@po-ui/ng-templates';
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicTableService } from '../../../services/DynamicTableService/dynamic-table.service';
-import { PoMetadata, PoMetadataField } from '../../../interfaces/metadata/po-metadata-field';
+import { HttpClient } from '@angular/common/http';
+import { TratamentoDeErrosService } from '../../../services/tratamento-de-erros.service';
+
 
 @Component({
   selector: 'app-lista',
@@ -13,27 +13,74 @@ import { PoMetadata, PoMetadataField } from '../../../interfaces/metadata/po-met
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.scss'
 })
-export class ListaComponent implements OnInit {
+export class ListaComponent {
   metadata: any;
   serviceApi: string = '';
   fields: PoDynamicViewField[] = [];
-  public readonly metadataApi = 'http://localhost:5000/api/metadatas/usercompletos';
 
-  actions = {
-    new: '/cadastro',
-    edit: '/editar/:id',
-    remove: true
+  constructor(private http: HttpClient,
+    private errorHandler: TratamentoDeErrosService,
+    private poNotification: PoNotificationService,
+    private router: Router,
+    private poDialog: PoDialogService) { }
+
+  public readonly breadcrumb: PoBreadcrumb = {
+    items: [
+      { label: 'Home', link: '/home' },
+      { label: 'Tabela de Parâmetros' },
+    ]
   };
 
-  constructor(private router: Router, private route: ActivatedRoute, private dynamicTableService: DynamicTableService, private http: HttpClient) { }
+  actions = {
+    new: '/sw_cadastro',
+    //edit: '/editar/:id',
+  };
+
+  readonly customActions = [
+    {
+      label: 'Excluir',
+      action: (item: any) => this.deleteItem(item),
+      icon: 'an an-trash',
+    },
+    {
+      label: 'Editar',
+      action: (item: any) => this.editItem(item),
+      icon: 'an an-pencil-line',
+    },
+
+  ];
 
 
-  ngOnInit(): void {
-    this.http.get<any>('http://localhost:5000/api/Metadatas/usercompletos')
-      .subscribe(metadata => {
-        this.fields = metadata.fields;
-        this.serviceApi = metadata.serviceApi;
-      });
+  reloadTable() {
+    window.location.reload();
   }
+
+  public deleteItem(item: any): void {
+    this.poDialog.confirm({
+      title: 'Confirmação de Exclusão',
+      message: `Tem certeza que deseja excluir o item "${item.chave}"?`,
+      confirm: () => {
+        this.http.delete(`http://localhost:5000/api/sw_parametros/${item.id}`).subscribe({
+          next: () => {
+            this.poNotification.success('Item excluído com sucesso!');
+            this.reloadTable();
+          },
+          error: (error) => {
+            this.poNotification.error('Erro ao excluir item.');
+            this.errorHandler.mostraErro(error);
+          }
+        });
+      },
+      cancel: () => {
+        this.poNotification.warning('Ação de exclusão cancelada.');
+      }
+    });
+  }
+
+
+  public editItem(item: any) {
+    this.router.navigate(['/sw_editar', item.id])
+  };
+
 
 }

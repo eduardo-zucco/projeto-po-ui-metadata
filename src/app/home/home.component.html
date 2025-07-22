@@ -2,22 +2,46 @@
   <po-menu [p-menus]="menus" p-automatic-toggle="true"></po-menu>
 
   <po-toolbar p-title="Sistema de Usuários"></po-toolbar>
-  <po-page-default p-title="Bem-vindo" p-subtitle="Gerencie seus Usuários de Forma Fácil e Rápida">
+  <po-page-default
+    p-title="Bem-vindo"
+    p-subtitle="Gerencie seus Usuários de Forma Fácil e Rápida"
+  >
     <div class="po-container home-content">
-      <h2 class="home-subtitle" style="text-align: center;">Escolha uma opção para começar:</h2>
+      <h2 class="home-subtitle" style="text-align: center">
+        Escolha uma opção para começar:
+      </h2>
       <div class="button-group">
-        <po-button class="animated-po-button primary" p-label="Cadastrar Usuário" p-icon="po-icon-user-add"
-          (p-click)="goToCadastro()"></po-button>
+        <po-button
+          class="animated-po-button primary"
+          p-label="Cadastrar Usuário"
+          p-icon="po-icon-user-add"
+          (p-click)="goToCadastro()"
+        ></po-button>
 
-        <po-button class="animated-po-button secondary" p-label="Ver Tabela" p-icon="po-icon-list"
-          (p-click)="goToTabela()"></po-button>
+        <po-button
+          class="animated-po-button secondary"
+          p-label="Ver Tabela de Parâmetros"
+          p-icon="po-icon-list"
+          (p-click)="goToParametrosTabela()"
+        ></po-button>
 
-        <po-button class="animated-po-button accent" p-label="Procurar Usuário" p-icon="po-icon-search"
-          (p-click)="goToSearch()"></po-button>
+        <po-button
+          class="animated-po-button secondary"
+          p-label="Ver Tabela de Usuários"
+          p-icon="po-icon-list"
+          (p-click)="goToTabela()"
+        ></po-button>
+
+        <po-button
+          class="animated-po-button accent"
+          p-label="Procurar Usuário"
+          p-icon="po-icon-search"
+          (p-click)="goToSearch()"
+        ></po-button>
       </div>
 
       <div class="image-container">
-        <img src="images/11879749.png" alt="Imagem" class="image">
+        <img src="images/11879749.png" alt="Imagem" class="image" />
       </div>
     </div>
   </po-page-default>

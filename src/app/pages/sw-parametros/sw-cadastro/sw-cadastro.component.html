@@ -1,0 +1,17 @@
+<po-page-default p-title="Cadastrar" [p-breadcrumb]="breadcrumb">
+  <po-dynamic-form [p-fields]="fields"></po-dynamic-form>
+
+  <br>
+
+  <div class="po-row">
+    <po-button
+      p-label="Salvar"
+      (p-click)="onSubmit(dynamicForm.form.value)"
+    ></po-button>
+
+    <po-button
+      p-label="Cancelar"
+      (p-click)="onCancel()"
+    ></po-button>
+  </div>
+</po-page-default>
