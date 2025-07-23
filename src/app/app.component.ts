@@ -11,7 +11,6 @@ import { StartupService } from './services/startup.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'projeto-po-ui';
 
   constructor(private router: Router, private startupService: StartupService) {}
 

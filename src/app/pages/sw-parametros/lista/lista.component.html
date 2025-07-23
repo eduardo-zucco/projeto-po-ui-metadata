@@ -1,6 +1,15 @@
 <po-page-dynamic-table
   [p-actions]="actions"
-  [p-service-api]="serviceApi"
   [p-breadcrumb]="breadcrumb"
   [p-table-custom-actions]="customActions"
+  [p-infinite-scroll]="true"
+  [p-draggable]="true"
+  [p-text-wrap]="true"
 ></po-page-dynamic-table>
+
+<po-modal #modalDetail p-title="Detalhes do item">
+  <po-dynamic-view
+    [p-value]="selectedItem"
+    [p-fields]="fieldsToDisplay"
+  ></po-dynamic-view>
+</po-modal>

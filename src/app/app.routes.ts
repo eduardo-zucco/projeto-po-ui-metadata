@@ -18,19 +18,19 @@ export const routes: Routes = [
   {
     path: 'lista', component: ListaComponent, data: {
       serviceApi: 'http://localhost:5000/api/sw_parametros',
-      serviceMetadataApi: 'http://localhost:5000/api/metadatas/sw_parametros'
+      serviceMetadataApi: 'http://localhost:5000/api/sw_parametros/metadata'
     }
   },
   {
     path: 'sw_cadastro', component: SwCadastroComponent, data: {
       serviceApi: 'http://localhost:5000/api/sw_parametros',
-      serviceMetadataApi: 'http://localhost:5000/api/metadatas/sw_parametros'
+      serviceMetadataApi: 'http://localhost:5000/api/sw_parametros/metadata'
     }
   },
   {
     path: 'sw_editar/:id', component: SwEditarComponent, data: {
       serviceApi: 'http://localhost:5000/api/sw_parametros',
-      serviceMetadataApi: 'http://localhost:5000/api/metadatas/sw_parametros'
+      serviceMetadataApi: 'http://localhost:5000/api/sw_parametros/metadata'
     }
   },
 ];

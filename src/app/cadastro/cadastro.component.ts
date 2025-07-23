@@ -111,10 +111,6 @@ export class CadastroComponent {
     return this.dynamicForm?.form?.invalid ?? false;
   };
 
-  actions = {
-    submit: 'Salvar',
-    cancel: this.onCancel.bind(this)
-  };
 
 
 

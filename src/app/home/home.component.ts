@@ -21,10 +21,10 @@ export class HomeComponent{
   collapsed: boolean = true;
   menus = [
     { label: 'Home', link: '/home', icon: 'an an-house-line' },
-    { label: 'Cadastro de Usuário', link: '/cadastro', icon: 'an an-book-open-text' },
+    { label: 'Cadastro de Usuário', link: '/cadastro', icon: 'po-icon-user-add' },
     { label: 'Buscar Usuário', link: '/search', icon: 'po-icon-search' },
-    { label: 'Tabela de Usuários', link: '/tabela', icon: 'an an-database' },
-    { label: 'Tabela de Parâmetros', link: '/lista', icon: 'an an-database' },
+    { label: 'Tabela de Usuários', link: '/tabela', icon: 'po-icon-list' },
+    { label: 'Tabela de Parâmetros', link: '/lista', icon: 'po-icon-list' },
   ]
   actions: Array<PoToolbarAction> = [
     {
