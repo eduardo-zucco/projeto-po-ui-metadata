@@ -1,12 +1,15 @@
-<po-page-dynamic-table
-  [p-actions]="actions"
-  [p-breadcrumb]="breadcrumb"
-  [p-table-custom-actions]="customActions"
-  [p-infinite-scroll]="true"
-  [p-draggable]="true"
-  [p-text-wrap]="true"
-></po-page-dynamic-table>
-
+<ng-container *ngIf="metadataReady">
+  <po-page-dynamic-table
+    [p-title]="title"
+    [p-fields]="fields"
+    [p-service-api]="'http://localhost:5000/api/sw_parametros'"
+    [p-breadcrumb]="breadcrumb"
+    [p-actions]="actions"
+    [p-table-custom-actions]="customActions"
+    [p-draggable]="false"
+  >
+  </po-page-dynamic-table>
+</ng-container>
 <po-modal #modalDetail p-title="Detalhes do item">
   <po-dynamic-view
     [p-value]="selectedItem"

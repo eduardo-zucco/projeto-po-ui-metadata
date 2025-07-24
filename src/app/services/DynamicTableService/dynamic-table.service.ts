@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { PoMetadata, PoMetadataField } from '../../interfaces/metadata/po-metadata-field';
 
 @Injectable({
@@ -10,18 +10,15 @@ export class DynamicTableService {
 
   constructor(private http: HttpClient) { }
 
-  getMetadata(entityName: string): Observable<PoMetadata>
-  {
-    return this.http.get<PoMetadata>(`http://localhost:5000/api/${entityName}/metadata`);
+ getMetadata(): Observable<any> {
+    return this.http.get('http://localhost:5000/api/metadata/sw_parametros');
   }
 
-   getData(entityName: string, params: any): Observable<any>
-  {
-    return this.http.get<any>(`http://localhost:5000/api/${entityName}`, { params });
+  getData(): Observable<any> {
+    return this.http.get('http://localhost:5000/api/sw_parametros');
   }
 
-  deleteItem(entityName: string, id: string): Observable<any>
-  {
-    return this.http.delete(`http://localhost:5000/api/${entityName}/${id}`);
+  getMetadataAndData() {
+    return forkJoin([this.getMetadata(), this.getData()]);
   }
 }

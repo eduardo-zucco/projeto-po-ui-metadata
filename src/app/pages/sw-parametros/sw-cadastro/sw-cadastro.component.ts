@@ -43,7 +43,6 @@ export class SwCadastroComponent implements OnInit {
           console.log('usuario recebido', data)
           this.fields = data.fields;
         }
-
       })
     }
 

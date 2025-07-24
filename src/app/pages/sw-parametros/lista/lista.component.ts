@@ -1,38 +1,54 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PoBreadcrumb, PoBreadcrumbModule, PoDialogService, PoDynamicFormField, PoDynamicViewField, PoModalComponent, PoNotificationService, PoPageModule, PoModalModule, PoDynamicModule } from '@po-ui/ng-components';
+import { PoBreadcrumb, PoBreadcrumbModule, PoDialogService, PoDynamicFormField, PoDynamicViewField, PoModalComponent, PoNotificationService, PoPageModule, PoModalModule, PoDynamicModule, PoDialogModule } from '@po-ui/ng-components';
 import { PoPageDynamicTableActions, PoPageDynamicTableModule, PoPageDynamicSearchModule, PoPageDynamicSearchFilters, PoPageDynamicTableFilters } from '@po-ui/ng-templates';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DynamicTableService } from '../../../services/DynamicTableService/dynamic-table.service';
 import { HttpClient } from '@angular/common/http';
 import { TratamentoDeErrosService } from '../../../services/tratamento-de-erros.service';
+import { CommonModule, NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-lista',
-  imports: [PoPageDynamicTableModule, PoModalModule, PoDynamicModule],
+  imports: [PoPageDynamicTableModule, PoModalModule, PoDynamicModule, CommonModule, PoDialogModule, PoBreadcrumbModule, RouterModule],
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.scss'
 })
-export class ListaComponent {
-  @ViewChild('modalDetail', { static: true }) modalDetail!: PoModalComponent
+export class ListaComponent implements OnInit {
+  @ViewChild('modalDetail', { static: false }) modalDetail!: PoModalComponent
   selectedItem: any = {};
   fieldsToDisplay: PoDynamicViewField[] = [];
-  metadata: any;
-  serviceApi: any;
-  fields: PoDynamicViewField[] = [];
+  fields: any[] = [];
+  title: string = '';
+  keepFilters = false;
+  metadataReady = false;
+  serviceApi: string = '';
+
+
 
   constructor(private http: HttpClient,
     private errorHandler: TratamentoDeErrosService,
     private poNotification: PoNotificationService,
     private router: Router,
     private poDialog: PoDialogService,
+    private route: ActivatedRoute
   ) { }
 
-  /*ngOnInit() {
-    this.http.get('http://localhost:5000/api/sw_parametros/metadata?type=list&version=1')
-      .subscribe(data => this.metadata = data);
-  }*/
-
+  ngOnInit(): void {
+    this.http.get<any>('http://localhost:5000/api/metadata/sw_parametros')
+      .subscribe({
+        next: metadata => {
+          this.fields = metadata.fields;
+          this.title = metadata.title;
+          this.serviceApi = metadata.serviceApi;
+          this.keepFilters = metadata.keepFilters ?? false;
+          this.metadataReady = true;
+        },
+        error: err => {
+          this.poNotification.error('Erro ao carregar metadados.');
+        }
+      });
+  }
   public readonly breadcrumb: PoBreadcrumb = {
     items: [
       { label: 'Home', link: '/home' },
@@ -98,22 +114,15 @@ export class ListaComponent {
   showItemDetails = (item: any) => {
     this.selectedItem = item;
 
-    if (this.metadata?.fields?.length) {
-      this.fieldsToDisplay = this.metadata.fields;
-    }
-    else {
-      this.fieldsToDisplay = Object.keys(item).map(key => ({
-        property: key,
-        label: this.formatarLabel(key)
-      }));
-    }
-
+    this.fieldsToDisplay = Object.keys(item).map(key => ({
+      property: key,
+      label: this.formatarLabel(key)
+    }));
     this.modalDetail.open();
   }
 
   formatarLabel(key: string): string {
     return key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
   }
-
 
 }

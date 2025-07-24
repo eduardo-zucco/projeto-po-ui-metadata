@@ -1,0 +1,10 @@
+::ng-deep .tabela-parametros td[data-property="valorInt"],
+::ng-deep .tabela-parametros td[data-property="usuario"] {
+  text-align: right !important;
+}
+
+/* Alinhar o cabeçalho também */
+::ng-deep .tabela-parametros th[data-property="valorInt"],
+::ng-deep .tabela-parametros th[data-property="usuario"] {
+  text-align: right !important;
+}
