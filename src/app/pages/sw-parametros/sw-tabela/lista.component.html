@@ -1,0 +1,13 @@
+<po-page-dynamic-table
+  [p-breadcrumb]="breadcrumb"
+  [p-actions]="actions"
+  [p-table-custom-actions]="customActions"
+  [p-draggable]="true"
+>
+</po-page-dynamic-table>
+<po-modal #modalDetail p-title="Detalhes do item">
+  <po-dynamic-view
+    [p-value]="selectedItem"
+    [p-fields]="fieldsToDisplay"
+  ></po-dynamic-view>
+</po-modal>

@@ -14,7 +14,7 @@ import { CommonModule, NgIf } from '@angular/common';
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.scss'
 })
-export class ListaComponent implements OnInit {
+export class ListaComponent  {
   @ViewChild('modalDetail', { static: false }) modalDetail!: PoModalComponent
   selectedItem: any = {};
   fieldsToDisplay: PoDynamicViewField[] = [];
@@ -34,7 +34,7 @@ export class ListaComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     this.http.get<any>('http://localhost:5000/api/metadata/sw_parametros')
       .subscribe({
         next: metadata => {
@@ -48,7 +48,7 @@ export class ListaComponent implements OnInit {
           this.poNotification.error('Erro ao carregar metadados.');
         }
       });
-  }
+  }*/
   public readonly breadcrumb: PoBreadcrumb = {
     items: [
       { label: 'Home', link: '/home' },
@@ -58,18 +58,20 @@ export class ListaComponent implements OnInit {
 
   actions = {
     new: '/sw_cadastro',
+    remove: false,
+    removeAll: false
   };
 
   readonly customActions = [
     {
       label: 'Excluir',
       action: (item: any) => this.deleteItem(item),
-      icon: 'an an-trash',
+      icon: 'po-icon-delete',
     },
     {
       label: 'Editar',
       action: (item: any) => this.editItem(item),
-      icon: 'an an-pencil-line',
+      icon: 'po-icon-edit',
     },
     {
       label: 'Detalhes',
@@ -111,18 +113,24 @@ export class ListaComponent implements OnInit {
     this.router.navigate(['/sw_editar', item.id])
   };
 
-  showItemDetails = (item: any) => {
+  showItemDetails = (item: Record<string, any>): void => {
     this.selectedItem = item;
 
-    this.fieldsToDisplay = Object.keys(item).map(key => ({
+    this.fieldsToDisplay = Object.entries(item).map(([key]) => ({
       property: key,
       label: this.formatarLabel(key)
     }));
     this.modalDetail.open();
   }
 
-  formatarLabel(key: string): string {
-    return key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  private formatarLabel(key: string): string {
+    const siglas = ['id', 'cpf']
+    return key.split('_').map(palavra =>
+      siglas.includes(palavra.toLowerCase())
+        ? palavra.toUpperCase()
+        : palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase()
+    )
+      .join(' ');
   }
 
 }

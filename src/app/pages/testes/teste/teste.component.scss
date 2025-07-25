@@ -1,10 +1,4 @@
-::ng-deep .tabela-parametros td[data-property="valorInt"],
-::ng-deep .tabela-parametros td[data-property="usuario"] {
-  text-align: right !important;
-}
-
-/* Alinhar o cabeçalho também */
-::ng-deep .tabela-parametros th[data-property="valorInt"],
-::ng-deep .tabela-parametros th[data-property="usuario"] {
-  text-align: right !important;
+::ng-deep .po-table-header-flex.po-table-header-flex-right {
+  justify-content: flex-start !important; /* Alinha à esquerda */
+  text-align: left !important; /* Alinha texto à esquerda */
 }
