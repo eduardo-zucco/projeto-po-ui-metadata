@@ -10,12 +10,12 @@ import { StartupService } from './services/startup.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
 
   constructor(private router: Router, private startupService: StartupService) {}
 
-  ngOnInit() {
+  //ngOnInit() {
     //this.startupService.showMessage();
     //console.log('AppComponent inicializado.');
-  };
+  //};
 }

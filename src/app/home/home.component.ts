@@ -18,7 +18,6 @@ export class HomeComponent{
   constructor(private router: Router, private http: HttpClient) { }
 
 
-  collapsed: boolean = true;
   menus = [
     { label: 'Home', link: '/home', icon: 'an an-house-line' },
     { label: 'Cadastro de Usuário', link: '/cadastro', icon: 'po-icon-user-add' },
@@ -26,17 +25,7 @@ export class HomeComponent{
     { label: 'Tabela de Usuários', link: '/tabela', icon: 'po-icon-list' },
     { label: 'Tabela de Parâmetros', link: '/lista', icon: 'po-icon-list' },
   ]
-  actions: Array<PoToolbarAction> = [
-    {
-      icon: 'po-icon-menu',
-      action: () => this.toggleMenu(),
-      label: 'Menu'
-    }
 
-  ];
-  toggleMenu() {
-    this.collapsed = !this.collapsed
-  };
   goToCadastro() {
     this.router.navigate(['/cadastro'])
   };

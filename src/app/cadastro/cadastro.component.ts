@@ -11,10 +11,11 @@ import {
 } from '@po-ui/ng-components';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TratamentoDeErrosService } from '../services/tratamento-de-erros.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
-  imports: [PoDynamicModule, PoButtonModule, PoNotificationModule, PoPageModule, PoBreadcrumbModule],
+  imports: [PoDynamicModule, PoButtonModule, PoNotificationModule, PoPageModule, PoBreadcrumbModule, CommonModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })

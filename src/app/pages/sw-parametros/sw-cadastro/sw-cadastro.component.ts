@@ -40,12 +40,11 @@ export class SwCadastroComponent implements OnInit {
     if (this.metadata) {
       this.http.get<any>(this.metadata).subscribe({
         next: (data) => {
-          console.log('usuario recebido', data)
+          //console.log('usuario recebido', data)
           this.fields = data.fields;
         }
       })
     }
-
   }
 
 

@@ -1,0 +1,57 @@
+.animated-po-button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeInUp 0.8s ease-in-out;
+  animation-fill-mode: both;
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  &.primary {
+    background-color: var(--po-color-primary);
+    color: #fff;
+
+    &:hover,
+    &:active {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(2, 117, 31, 0.438);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--po-color-secondary);
+    color: #fff;
+
+    &:hover,
+    &:active {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 102, 150, 0.466);
+    }
+  }
+
+  &.accent {
+    background-color: var(--po-color-contrast);
+    color: #fff;
+
+    &:hover,
+    &:active {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(198, 40, 40, 0.4);
+    }
+  }
+}
+.disabled-button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+
+}

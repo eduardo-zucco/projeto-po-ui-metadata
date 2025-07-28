@@ -28,9 +28,9 @@ export class SwEditarComponent {
     save: '/lista'
   };
 
-  constructor(private http: HttpClient, private poNotification: PoNotificationService, private router: Router, private errorHandler: TratamentoDeErrosService){}
-
-
-
-
+  constructor(
+    private http: HttpClient,
+    private poNotification: PoNotificationService,
+    private router: Router,
+    private errorHandler: TratamentoDeErrosService) { }
 }

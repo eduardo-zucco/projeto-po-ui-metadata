@@ -19,36 +19,16 @@ export class ListaComponent  {
   selectedItem: any = {};
   fieldsToDisplay: PoDynamicViewField[] = [];
   fields: any[] = [];
-  title: string = '';
-  keepFilters = false;
-  metadataReady = false;
   serviceApi: string = '';
-
-
 
   constructor(private http: HttpClient,
     private errorHandler: TratamentoDeErrosService,
     private poNotification: PoNotificationService,
     private router: Router,
     private poDialog: PoDialogService,
-    private route: ActivatedRoute
+
   ) { }
 
-  /*ngOnInit(): void {
-    this.http.get<any>('http://localhost:5000/api/metadata/sw_parametros')
-      .subscribe({
-        next: metadata => {
-          this.fields = metadata.fields;
-          this.title = metadata.title;
-          this.serviceApi = metadata.serviceApi;
-          this.keepFilters = metadata.keepFilters ?? false;
-          this.metadataReady = true;
-        },
-        error: err => {
-          this.poNotification.error('Erro ao carregar metadados.');
-        }
-      });
-  }*/
   public readonly breadcrumb: PoBreadcrumb = {
     items: [
       { label: 'Home', link: '/home' },
@@ -107,7 +87,6 @@ export class ListaComponent  {
       }
     });
   }
-
 
   public editItem(item: any) {
     this.router.navigate(['/sw_editar', item.id])

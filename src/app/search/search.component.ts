@@ -76,6 +76,7 @@ export class SearchComponent {
     ];
 
   constructor(private http: HttpClient, private poNotification: PoNotificationService) {}
+  
   buscarUsuario() {
     if (!this.email) {
       this.poNotification.warning('Digite um e-mail válido e cadastrado.');

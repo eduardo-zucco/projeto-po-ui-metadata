@@ -17,14 +17,6 @@ export class TabelaComponent {
 
   readonly serviceApi = 'http://localhost:5000/api/usercompletos';
 
-  readonly filters: Array<PoPageDynamicSearchFilters> = [
-    { property: 'name', label: 'Nome' },
-    { property: 'email', label: 'E-mail' },
-    { property: 'uf', label: 'UF' },
-    { property: 'municipio', label: 'Município' },
-    { property: 'cep', label: 'CEP' }
-  ];
-
   public actions: PoPageDynamicTableActions = {
     new: '/cadastro',
   };
@@ -43,7 +35,10 @@ export class TabelaComponent {
     { property: 'cep', label: 'CEP' },
     { property: 'createAt', label: 'Criado Em', visible: false }
   ];
-  constructor(private userTableService: UserTableService, private http: HttpClient, private poNotification: PoNotificationService, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private poNotification: PoNotificationService,
+    private router: Router) { }
 
   reloadTable() {
     window.location.reload();
@@ -70,12 +65,12 @@ export class TabelaComponent {
     {
       label: 'Excluir',
       action: (user: any) => this.deleteUser(user),
-      icon:'an an-trash',
+      icon: 'an an-trash',
     },
     {
       label: 'Editar',
-      action: (user: any)=> this.editarUsuario(user),
-      icon:'an an-pencil-line',
+      action: (user: any) => this.editarUsuario(user),
+      icon: 'an an-pencil-line',
     }
   ];
 
